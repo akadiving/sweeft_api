@@ -5,6 +5,7 @@
 ### Steps
   - type following commands in your console of choice
   - python3 -m venv venv
+  - modify .env.example in sweef_project directory
   - source venv/bin/activate
   - pip install -r requirements.txt
   - python manage.py makemigrations
