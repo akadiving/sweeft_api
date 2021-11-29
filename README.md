@@ -13,9 +13,14 @@
   - python manage.py collectstatic
   - python manage.py createsuperuser (create super user: this step is optional)
   - python manage.py runserver
+  - navigate to http://127.0.0.1:8000/
 
 ### Docker
-  - docker-compose up --build
+  - docker-compose up --build (builds image and creates container)
+  - docker-compose start (start the cointainer)
+  - docker-compose stop (stops the cointainer)
+  - docker-compose down (destroys the cointainer)
+  - navigate to http://0.0.0.0:8000/
 
 ### URLS
   - /generate_activity (generates activity and stores it in database)
