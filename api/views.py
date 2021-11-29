@@ -27,11 +27,11 @@ class GenerateActivity(APIView):
         return Response(serialized_data.data)
 
 
+
 class CategoryList(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    filters = [filters.OrderingFilter]
-    ordering_fields =['total_activities']
+    search_fields = ['^name',]
 
 
 class RetrieveActivity(generics.ListAPIView):
@@ -40,4 +40,11 @@ class RetrieveActivity(generics.ListAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ['^type__name',]
 
+class RetrieveDescendingActivity(generics.ListAPIView):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['^type__name',]
     
+    def get_queryset(self):
+        return self.queryset.order_by('-price')
