@@ -13,7 +13,10 @@
   - python manage.py collectstatic
   - python manage.py createsuperuser (create super user: this step is optional)
   - python manage.py runserver
-  
+
+### Docker
+  - docker-compose up --build
+
 ### URLS
   - /generate_activity (generates activity and stores it in database)
   - /get_categories (gets all stored catagory)
