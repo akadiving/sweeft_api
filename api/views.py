@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from .models import Activity, Category
 from .serializers import ActivitySerializer, CategorySerializer
 import requests
-
+from django.db.models import Count
 
 # Create your views here.
 
@@ -29,7 +29,7 @@ class GenerateActivity(APIView):
 
 
 class CategoryList(generics.ListAPIView):
-    queryset = Category.objects.all()
+    queryset = Category.objects.annotate(total_activities=Count('activity')).order_by('-total_activities')
     serializer_class = CategorySerializer
     search_fields = ['^name',]
 

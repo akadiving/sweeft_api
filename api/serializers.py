@@ -15,11 +15,8 @@ class CategorySerializer(serializers.ModelSerializer):
     Serializer for Acitivities
     """
 
-    total_activities = serializers.SerializerMethodField()
+    total_activities = serializers.IntegerField(read_only=True)
     class Meta:
         model = Category
         fields = ['id', 'name', 'total_activities']
 
-    #chekk the total number of activites for category
-    def get_total_activities(self, obj):
-        return obj.activity.count()
